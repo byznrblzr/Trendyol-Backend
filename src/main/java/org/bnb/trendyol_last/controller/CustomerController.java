@@ -1,14 +1,13 @@
 package org.bnb.trendyol_last.controller;
 
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.bnb.trendyol_last.dto.CustomerDTO;
 import org.bnb.trendyol_last.dto.CustomerRequestDTO;
-import org.bnb.trendyol_last.exception.ErrorMessages;
-import org.bnb.trendyol_last.model.Customer;
 import org.bnb.trendyol_last.service.CustomerService;
-import org.bnb.trendyol_last.service.CustomerServiceImpl;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,5 +49,38 @@ public class CustomerController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/pdf")
+    public ResponseEntity<byte[]> generatePdf() {
+        try {
+            List<CustomerDTO> customers = customerService.getAllCustomers();
+
+            // Prevent Jasper errors if list is empty
+            if (customers == null || customers.isEmpty()) {
+                // Return a 204 No Content or a custom message
+                return ResponseEntity.noContent().build();
+            }
+
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(customers);
+
+            // Dosya yolu "\src\main\resources\customer.jrxml" customer.jrxml diye dosya olmalı ki ona ulaşabilsin bir nevi blueprint pdfnin nasıl olacağını söyliyen
+            org.springframework.core.io.ClassPathResource res = new org.springframework.core.io.ClassPathResource("customer.jrxml");
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(res.getInputStream());
+
+            // Passing an empty HashMap for parameters instead of null is safer
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new java.util.HashMap<>(), dataSource);
+
+            byte[] data = JasperExportManager.exportReportToPdf(jasperPrint);
+
+            return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .header("Content-Disposition", "inline; filename=customer_report.pdf")
+                    .body(data);
+
+        } catch (Exception e) {
+            e.printStackTrace(); // Look at the terminal to see the REAL error
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 
 }

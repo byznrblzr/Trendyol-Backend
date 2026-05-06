@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### files that are not compatible with others ##
+resources/application.properties
+build.gradle

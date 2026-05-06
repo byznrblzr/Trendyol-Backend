@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport name="customer_report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7f707f1d-2f08-468b-9e45-120002130e61">
+
+    <!-- Fields updated to match CustomerDTO exactly -->
+    <field name="id" class="java.lang.Long"/>
+    <field name="name" class="java.lang.String"/>
+    <field name="phone" class="java.lang.String"/>
+
+    <!-- 1. HEADER SECTION -->
+    <title height="80">
+        <element kind="rectangle" x="0" y="0" width="555" height="60" forecolor="#2C3E50" backcolor="#2C3E50"/>
+        <element kind="staticText" x="0" y="10" width="555" height="30" forecolor="#FFFFFF" fontSize="22.0" bold="true" hTextAlign="Center">
+            <text><![CDATA[CUSTOMER INFORMATION SYSTEM]]></text>
+        </element>
+        <element kind="textField" x="0" y="40" width="545" height="15" forecolor="#ECF0F1" fontSize="10.0" hTextAlign="Right">
+            <expression><![CDATA["Generated on: " + new java.util.Date()]]></expression>
+        </element>
+    </title>
+
+    <!-- 2. TABLE HEADERS (Redistributed for ID, Name, Phone) -->
+    <columnHeader height="30">
+        <element kind="rectangle" x="0" y="0" width="555" height="25" forecolor="#BDC3C7" backcolor="#F4F6F7"/>
+        <element kind="staticText" x="0" y="0" width="80" height="25" forecolor="#2C3E50" fontSize="11.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+            <text><![CDATA[ID]]></text>
+        </element>
+        <element kind="staticText" x="80" y="0" width="275" height="25" forecolor="#2C3E50" fontSize="11.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+            <text><![CDATA[Customer Name]]></text>
+        </element>
+        <element kind="staticText" x="355" y="0" width="200" height="25" forecolor="#2C3E50" fontSize="11.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+            <text><![CDATA[Phone Number]]></text>
+        </element>
+    </columnHeader>
+
+    <!-- 3. DATA ROWS -->
+    <detail>
+        <band height="25">
+            <element kind="line" x="0" y="24" width="555" height="1" forecolor="#ECF0F1"/>
+            <element kind="textField" x="0" y="0" width="80" height="24" fontSize="10.0" hTextAlign="Center" vTextAlign="Middle">
+                <expression><![CDATA[$F{id}]]></expression>
+            </element>
+            <element kind="textField" x="85" y="0" width="270" height="24" fontSize="10.0" vTextAlign="Middle">
+                <expression><![CDATA[$F{name}]]></expression>
+            </element>
+            <element kind="textField" x="360" y="0" width="195" height="24" fontSize="10.0" vTextAlign="Middle">
+                <expression><![CDATA[$F{phone}]]></expression>
+            </element>
+        </band>
+    </detail>
+
+    <!-- 4. PAGE FOOTER -->
+    <pageFooter height="30">
+        <element kind="line" x="0" y="5" width="555" height="1" forecolor="#2C3E50"/>
+        <element kind="textField" x="350" y="10" width="200" height="20" hTextAlign="Right">
+            <expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
+        </element>
+    </pageFooter>
+</jasperReport>
