@@ -5,8 +5,10 @@ import org.bnb.trendyol_last.dto.ProductRequestDTO;
 import org.bnb.trendyol_last.model.Product;
 import org.bnb.trendyol_last.service.ProductService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 import java.util.List;
@@ -24,20 +26,31 @@ public class ProductController {
         return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
     }
 
+    /*@GetMapping("/image/{id}")
+public ResponseEntity<Resource> getProductImage(@PathVariable Long id) {
+   // service image dosyasını bulur ve döndürür
+}*/
+
     @GetMapping(path = "/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable long id) {
         if (id == 0) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
         return new ResponseEntity<>(productService.getProductById(id), HttpStatus.OK);
     }
+ /*@GetMapping("/image/{id}")
+public ResponseEntity<Resource> getProductImage(@PathVariable Long id) {
+    // service image dosyasını bulur ve döndürür
+}*/
 
-    @PostMapping(path = "/add")
-    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductRequestDTO requestProduct) {
-        return new ResponseEntity<>(productService.createProduct(requestProduct), HttpStatus.CREATED);
-    }
+    @PostMapping(value = "/add", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ProductDTO> createProduct(@RequestPart("product") ProductRequestDTO productRequestDTO, @RequestPart(value = "image", required = false) MultipartFile image) {
+    return ResponseEntity.status(HttpStatus.CREATED)
+            .body(productService.createProduct(productRequestDTO, image));
+}
 
-    @PutMapping(path = "/update/{id}")
-    public ResponseEntity<ProductDTO> updateProduct(@PathVariable long id, @RequestBody ProductRequestDTO updateProduct) {
-        return new ResponseEntity<>(productService.updateProduct(id, updateProduct), HttpStatus.OK);
+    @PutMapping(path = "/update/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ProductDTO> updateProduct(@PathVariable long id, @RequestPart("product") ProductRequestDTO updateProduct, @RequestPart(value = "image", required = false) MultipartFile image) {
+        ProductDTO updatedProduct = productService.updateProduct(id, updateProduct, image);
+        return ResponseEntity.ok(updatedProduct);
     }
 
     @DeleteMapping(path = "/delete/{id}")
@@ -45,4 +58,5 @@ public class ProductController {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
     }
+
 }
