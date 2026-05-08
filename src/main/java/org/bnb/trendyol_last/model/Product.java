@@ -25,17 +25,16 @@ public class Product {
 
     private Double price;
 
+    @Column(length = 255)
+    private String imageName;
+
+    @Column(length = 500)
+    private String imagePath;
+
+    @Column(length = 100)
+    private String imageType;
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Order> orders;
 
-    /*public Product(ProductDTO ProductDTO) {
-        this.id = ProductDTO.getId();
-        this.name = ProductDTO.getName();
-        this.supplier = ProductDTO.getSupplier();
-        this.price = ProductDTO.getPrice();
-    }
-
-    public ProductDTO viewAsProductDTO() {
-        return new ProductDTO(id, name, supplier, price);
-    }*/
 }
