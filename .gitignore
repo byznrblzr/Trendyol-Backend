@@ -36,6 +36,19 @@ out/
 ### VS Code ###
 .vscode/
 
+### NODE ###
+node_modules/
+
+# Debug logs
+npm-debug.log*
+yarn-error.log*
+
+# Environment variables (Sensitive info!)
+.env
+
+# Build output
+dist/
+
 ### files that are not compatible with others ##
 resources/application.properties
 build.gradle
