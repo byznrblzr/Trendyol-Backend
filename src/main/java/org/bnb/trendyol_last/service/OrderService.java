@@ -11,4 +11,5 @@ public interface OrderService {
     public OrderDTO createOrder(OrderRequestDTO requestOrder);
     public OrderDTO updateOrder(long id, OrderRequestDTO updateOrder);
     public void deleteOrder(long id);
+    public byte[] generateOrderPdf(Long orderId);
 }

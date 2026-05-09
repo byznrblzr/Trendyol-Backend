@@ -13,7 +13,7 @@ public class ProductMapper {
         String imageUrl = null;
 
         if (product.getImageName() != null && !product.getImageName().isEmpty()) {
-            imageUrl = "/product/images/" + product.getImageName();
+            imageUrl = "/product/images/" + product.getId();
         }
 
         return new ProductDTO(

@@ -14,13 +14,19 @@ public class FileStorageService {
 
     private final Path productImagePath = Paths.get("uploads/products");
 
+
     public String saveProductImage(MultipartFile image) {
         try {
+            // Eğer image hiç gönderilmemişse veya boş gönderilmişse kaydetme işlemi yapmayız.
             if (image == null || image.isEmpty()) {
                 return null;
             }
+            //tip kontrolü
             validateImage(image);
+
             Files.createDirectories(productImagePath);
+
+            //orijinal adını alıyoruz
             String originalFileName = image.getOriginalFilename();
             String extension = getFileExtension(originalFileName);
             String imageName = UUID.randomUUID() + extension;
@@ -34,6 +40,7 @@ public class FileStorageService {
             throw new RuntimeException("Image could not be saved: " + e.getMessage());
         }
     }
+
 
     public void deleteProductImage(String imageName) {
         try {
@@ -50,6 +57,7 @@ public class FileStorageService {
         }
     }
 
+
     private void validateImage(MultipartFile image) {
         String contentType = image.getContentType();
 
@@ -60,6 +68,7 @@ public class FileStorageService {
             throw new RuntimeException("Only JPG, JPEG and PNG images are allowed.");
         }
     }
+
 
     private String getFileExtension(String originalFileName) {
         if (originalFileName == null || !originalFileName.contains(".")) {return "";}

@@ -1,0 +1,135 @@
+<!-- Created with Jaspersoft Studio version 7.0.6.final using JasperReports Library version 7.0.6-5d2a603fdc6b3db8f842a83383e594f41891534d  -->
+<jasperReport name="order_report" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a7eff7dd-9cb5-4335-a52b-001499e3857d">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="orderId" class="java.lang.Long"/>
+	<parameter name="orderDate" class="java.time.LocalDateTime"/>
+	<parameter name="city" class="java.lang.String"/>
+	<parameter name="deliveryStatus" class="java.lang.String"/>
+	<parameter name="customerName" class="java.lang.String"/>
+	<parameter name="customerAddress" class="java.lang.String"/>
+	<parameter name="customerPhone" class="java.lang.String"/>
+	<parameter name="productName" class="java.lang.String"/>
+	<parameter name="productSupplier" class="java.lang.String"/>
+	<parameter name="productPrice" class="java.lang.Double"/>
+	<parameter name="productImage" class="java.io.InputStream"/>
+	<query language="sql"><![CDATA[]]></query>
+	<background splitType="Stretch"/>
+	<detail>
+		<band height="760" splitType="Stretch">
+			<element kind="textField" uuid="2b2c0a26-e5b9-4a62-8cd5-dda0af9c92e6" x="460" y="660" width="100" height="30">
+				<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+			</element>
+			<element kind="textField" uuid="715a14b3-a4e9-4c41-b46b-4e97d990296f" x="90" y="120" width="100" height="20">
+				<expression><![CDATA[$P{orderId}]]></expression>
+			</element>
+			<element kind="textField" uuid="cf4ef636-1808-4799-89aa-cde902f2a3f3" x="132" y="0" width="328" height="40" fontSize="33.0" bold="true">
+				<expression><![CDATA["ORDER REPORT"]]></expression>
+			</element>
+			<element kind="textField" uuid="d7cf0ef2-b251-4e9d-9aaf-9907ba7a1689" x="130" y="40" width="290" height="30" fontSize="19.0">
+				<expression><![CDATA["Trendyol Order Detail Report"]]></expression>
+			</element>
+			<element kind="textField" uuid="bcb666db-815d-41ee-a468-86dec6a5fa67" x="10" y="120" width="75" height="20">
+				<expression><![CDATA["Order ID:"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="a172834b-ccb7-41b4-8d90-47938e216021" x="10" y="140" width="75" height="20">
+				<expression><![CDATA["Date:"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="c43e3dd7-63c6-416a-ac30-9b58e98360eb" x="10" y="160" width="75" height="20">
+				<expression><![CDATA["City:"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="825ece20-63e4-4670-820f-2a7c1c662fc0" x="10" y="180" width="80" height="20">
+				<expression><![CDATA["Delivery Status:"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="6807e336-4e27-4b89-a37b-3b9adbd66e3c" x="10" y="90" width="180" height="30" fontSize="14.0" bold="true">
+				<expression><![CDATA["ORDER INFORMATION"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="b7f25dbc-d0d3-4570-aa45-4a0a08ce0aa0" x="0" y="280" width="210" height="30" fontSize="14.0" bold="true">
+				<expression><![CDATA["CUSTOMER INFORMATION"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="851561a9-5c4b-442a-8945-4f1ef2f04e69" x="0" y="430" width="220" height="30" fontSize="14.0" bold="true">
+				<expression><![CDATA["PRODUCT INFORMATION"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="6ef3ca0d-cc45-446c-bd02-98ecdab5a3a6" x="0" y="310" width="110" height="20">
+				<expression><![CDATA["Name:"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="87594df7-8a89-46eb-bc5f-d65737d88f5f" x="0" y="330" width="110" height="20">
+				<expression><![CDATA["Address:"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="52f2d892-2158-4250-ac44-5aad28e9780e" x="0" y="350" width="110" height="20">
+				<expression><![CDATA["Phone:"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="b1bed7a2-9d5f-4a1c-8f58-be9dae00c14d" x="0" y="460" width="110" height="20">
+				<expression><![CDATA["Name:"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="721b3589-848c-4c0d-b84c-ff566e0c5eb2" x="0" y="480" width="110" height="20">
+				<expression><![CDATA["Supplier:"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="4e053a48-9051-47e8-8202-e60f94c8c0ca" x="0" y="500" width="110" height="20">
+				<expression><![CDATA["Price:"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="9efd264f-67fa-479b-939a-d44e0d61b4cc" x="90" y="139" width="100" height="23">
+				<expression><![CDATA[$P{orderDate}]]></expression>
+			</element>
+			<element kind="textField" uuid="f2bf6429-470e-4829-9f05-c91a428c95c6" x="90" y="160" width="100" height="20">
+				<expression><![CDATA[$P{city}]]></expression>
+			</element>
+			<element kind="textField" uuid="ec6875c4-b9e2-42dd-a98e-d229a96ad49f" x="90" y="180" width="100" height="20">
+				<expression><![CDATA[$P{deliveryStatus}]]></expression>
+			</element>
+			<element kind="textField" uuid="fa9c40f5-9586-49a7-9e58-9b1bece7c462" x="110" y="310" width="100" height="20">
+				<expression><![CDATA[$P{customerName}]]></expression>
+			</element>
+			<element kind="textField" uuid="c099f281-99ff-460c-a2fc-ee576ff9da75" x="110" y="325" width="119" height="25">
+				<expression><![CDATA[$P{customerAddress}]]></expression>
+			</element>
+			<element kind="textField" uuid="0d6dc60d-51a0-4c4c-b65d-8e469662681e" x="110" y="350" width="100" height="19">
+				<expression><![CDATA[$P{customerPhone}]]></expression>
+			</element>
+			<element kind="textField" uuid="5eef5202-6795-4659-a364-505217e0b347" x="110" y="459" width="100" height="23">
+				<expression><![CDATA[$P{productName}]]></expression>
+			</element>
+			<element kind="textField" uuid="eb75e04d-7a66-41a4-8c6d-1909278d7596" x="110" y="479" width="100" height="22">
+				<expression><![CDATA[$P{productSupplier}]]></expression>
+			</element>
+			<element kind="textField" uuid="438f3f41-44f9-4f41-90f8-264e21616b7c" x="110" y="495" width="100" height="25">
+				<expression><![CDATA[$P{productPrice}]]></expression>
+			</element>
+			<element kind="textField" uuid="2cceb8c2-036a-471b-81ae-8987777be8a9" x="190" y="730" width="170" height="30">
+				<expression><![CDATA["Generated By Trendyol Team 1"]]></expression>
+			</element>
+			<element kind="textField" uuid="1a2b9bcd-4ac6-42bd-a5df-345526ea2fe4" x="-32" y="700" width="618" height="30">
+				<expression><![CDATA["___________________________________________________________________________________________________________________________"]]></expression>
+			</element>
+			<element kind="image" uuid="ea30fcc4-3b0d-4694-b01d-b9b75b61deab" x="310" y="450" width="159" height="105">
+				<expression><![CDATA[$P{productImage}]]></expression>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</detail>
+</jasperReport>
