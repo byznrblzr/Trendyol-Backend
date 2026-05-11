@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping(path = "/order")
 public class OrderController {
@@ -47,9 +48,7 @@ public class OrderController {
     }
 
 
-
-
-    @GetMapping("/{id}/pdf")
+    @GetMapping("/pdf/{id}")
     public ResponseEntity<byte[]> generateOrderPdf(@PathVariable Long id) {
         byte[] pdf = orderService.generateOrderPdf(id);
 

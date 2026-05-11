@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping(path = "/product")
 public class ProductController {
@@ -32,10 +33,6 @@ public class ProductController {
         if (id == 0) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
         return new ResponseEntity<>(productService.getProductById(id), HttpStatus.OK);
     }
-
-
-
-
 
 
     @PostMapping(value = "/add", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
